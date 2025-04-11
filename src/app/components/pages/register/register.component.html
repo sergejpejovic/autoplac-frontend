@@ -1,0 +1,53 @@
+<div class="container mt-4">
+  <form>
+    <div class="mb-3">
+      <label for="username" class="form-label">Korisničko ime</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        class="form-control"
+        [(ngModel)]="user.username"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="form-control"
+        [(ngModel)]="user.email"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Lozinka</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        class="form-control"
+        [(ngModel)]="user.hashedPassword"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Potvrdi lozinku</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        class="form-control"
+        [(ngModel)]="user.confirmPassword"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn" (click)="register()">Registruj se</button>
+  </form>
+</div>
