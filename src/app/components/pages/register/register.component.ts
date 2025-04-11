@@ -36,7 +36,7 @@ export class RegisterComponent {
       if (data.success) {
         alert('Uspjesna registracija!');
         localStorage.setItem('autoplac-token', data.token);
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/login');
       } else {
         alert('Neuspjesna registracija');
       }
