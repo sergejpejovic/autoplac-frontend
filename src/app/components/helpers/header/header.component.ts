@@ -13,13 +13,13 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
 
-  ngOnInit(): void {
-    this.isLoggedIn = this.isUserLoggedIn();
-  }
+  constructor(private authService: AuthService) {}
 
-  isUserLoggedIn(): boolean {
-    const token = localStorage.getItem('autoplac-token');
-    return token ? true : false;
+  ngOnInit(): void {
+    this.isLoggedIn = this.authService.isLoggedIn() ?? false;
+    window.addEventListener('login-status-changed', () => {
+      this.isLoggedIn = this.authService.isLoggedIn();
+    });
   }
 
   logout() {

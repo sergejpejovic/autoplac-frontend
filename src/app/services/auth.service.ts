@@ -15,4 +15,10 @@ export class AuthService {
   register(user: User) {
     return this.http.post('http://localhost:4000/auth/register', user);
   }
+
+  isLoggedIn() {
+    const token = localStorage.getItem('autoplac-token');
+    if (token) return true;
+    return false;
+  }
 }
