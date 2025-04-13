@@ -1,93 +1,183 @@
-<div class="container">
-  <label>Vozilo</label>
-  <select class="form-select" [(ngModel)]="vehicle.type" name="type">
-    <option *ngFor="let vehicleType of vehicleTypes" [value]="vehicleType.id">
-      {{ vehicleType.name }}
-    </option>
-  </select>
+<div class="container my-5">
+  <h2 class="text-center mb-4">Dodavanje vozila</h2>
 
-  <label>Tip vozila</label>
-  <select class="form-select" [(ngModel)]="vehicle.bodyType" name="bodyType">
-    <option *ngFor="let bodyType of bodyTypes" [value]="bodyType.id">
-      {{ bodyType.name }}
-    </option>
-  </select>
+  <div class="row g-3 text-center">
+    <div class="col-md-4">
+      <label class="form-label">Vrsta vozila</label>
+      <select class="form-select" [(ngModel)]="vehicle.type" name="type">
+        <option
+          *ngFor="let vehicleType of vehicleTypes"
+          [value]="vehicleType.id"
+        >
+          {{ vehicleType.name }}
+        </option>
+      </select>
+    </div>
 
-  <label>Brand</label>
-  <select class="form-select" [(ngModel)]="vehicle.brand" name="brand">
-    <option *ngFor="let brand of brands" [value]="brand.id">
-      {{ brand.name }}
-    </option>
-  </select>
+    <div class="col-md-4">
+      <label class="form-label">Tip karoserije</label>
+      <select
+        class="form-select"
+        [(ngModel)]="vehicle.bodyType"
+        name="bodyType"
+      >
+        <option *ngFor="let bodyType of bodyTypes" [value]="bodyType.id">
+          {{ bodyType.name }}
+        </option>
+      </select>
+    </div>
 
-  <label>Model</label>
-  <select class="form-select" [(ngModel)]="vehicle.model" name="model">
-    <option *ngFor="let model of models" [value]="model.id">
-      {{ model.name }}
-    </option>
-  </select>
-
-  <label>Gorivo</label>
-  <select class="form-select" [(ngModel)]="vehicle.fuel" name="fuel">
-    <option *ngFor="let fuel of fuels" [value]="fuel.id">
-      {{ fuel.name }}
-    </option>
-  </select>
-
-  <label>Velicina motora</label>
-  <select
-    class="form-select"
-    [(ngModel)]="vehicle.engineSize"
-    name="engineSize"
-  >
-    <option *ngFor="let engineSize of engineSizes" [value]="engineSize.id">
-      {{ engineSize.size }}
-    </option>
-  </select>
-
-  <label>Mjenjac</label>
-  <select
-    class="form-select"
-    [(ngModel)]="vehicle.transmission"
-    name="transmission"
-  >
-    <option
-      *ngFor="let transmission of transmissions"
-      [value]="transmission.id"
-    >
-      {{ transmission.name }}
-    </option>
-  </select>
-
-  <label for="title">Naziv</label>
-  <input type="text" name="title" [(ngModel)]="vehicle.title" />
-
-  <label for="year">Godina proizvodnje</label>
-  <input type="date" name="year" [(ngModel)]="vehicle.year" />
-
-  <label for="price">Cijena</label>
-  <input type="number" name="price" [(ngModel)]="vehicle.price" />
-
-  <label for="mileage">Kilometraza</label>
-  <input type="number" name="mileage" [(ngModel)]="vehicle.mileage" />
-
-  <label for="color">Boja</label>
-  <input type="text" name="color" [(ngModel)]="vehicle.color" />
-
-  <label for="hp">Konjska snaga</label>
-  <input type="number" name="hp" [(ngModel)]="vehicle.hp" />
-
-  <label for="description">Opis</label>
-  <input type="text" name="description" [(ngModel)]="vehicle.description" />
-
-  <div class="form-group">
-    <label for="image">Slika</label>
-    <input type="file" (change)="setUpUploadedFile($event)" name="image" />
+    <div class="col-md-4">
+      <label class="form-label">Brend</label>
+      <select class="form-select" [(ngModel)]="vehicle.brand" name="brand">
+        <option *ngFor="let brand of brands" [value]="brand.id">
+          {{ brand.name }}
+        </option>
+      </select>
+    </div>
   </div>
 
-  <div class="text-center">
-    <button class="btn btn-success px-4 py-2" (click)="addVehicle()">
-      Sačuvaj
-    </button>
+  <div class="row g-3 mt-3 text-center">
+    <div class="col-md-3">
+      <label class="form-label">Model</label>
+      <select class="form-select" [(ngModel)]="vehicle.model" name="model">
+        <option *ngFor="let model of models" [value]="model.id">
+          {{ model.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Gorivo</label>
+      <select class="form-select" [(ngModel)]="vehicle.fuel" name="fuel">
+        <option *ngFor="let fuel of fuels" [value]="fuel.id">
+          {{ fuel.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Veličina motora</label>
+      <select
+        class="form-select"
+        [(ngModel)]="vehicle.engineSize"
+        name="engineSize"
+      >
+        <option *ngFor="let engineSize of engineSizes" [value]="engineSize.id">
+          {{ engineSize.size }}
+        </option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Menjač</label>
+      <select
+        class="form-select"
+        [(ngModel)]="vehicle.transmission"
+        name="transmission"
+      >
+        <option
+          *ngFor="let transmission of transmissions"
+          [value]="transmission.id"
+        >
+          {{ transmission.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row g-3 mt-3 text-center">
+    <div class="col-md-4">
+      <label class="form-label">Naziv</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="vehicle.title"
+        name="title"
+      />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Godina proizvodnje</label>
+      <input
+        type="date"
+        class="form-control"
+        [(ngModel)]="vehicle.year"
+        name="year"
+      />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Cijena (€)</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="vehicle.price"
+        name="price"
+      />
+    </div>
+  </div>
+
+  <div class="row g-3 mt-3 text-center">
+    <div class="col-md-4">
+      <label class="form-label">Kilometraža (km)</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="vehicle.mileage"
+        name="mileage"
+      />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Boja</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="vehicle.color"
+        name="color"
+      />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Konjska snaga (HP)</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="vehicle.hp"
+        name="hp"
+      />
+    </div>
+  </div>
+
+  <div class="row g-3 mt-3 text-center">
+    <div class="col-md-12">
+      <label class="form-label">Opis</label>
+      <textarea
+        class="form-control"
+        rows="3"
+        [(ngModel)]="vehicle.description"
+        name="description"
+      ></textarea>
+    </div>
+
+    <div class="col-md-12">
+      <label class="form-label">Slika</label>
+      <input
+        type="file"
+        class="form-control"
+        (change)="setUpUploadedFile($event)"
+        name="image"
+      />
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-12 text-center">
+      <button class="btn btn-success px-4 py-2" (click)="addVehicle()">
+        Sačuvaj
+      </button>
+      <button class="btn btn-light px-4 py-2 ms-4" routerLink="/">Nazad</button>
+    </div>
   </div>
 </div>
