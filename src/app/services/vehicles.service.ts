@@ -16,8 +16,18 @@ export class VehiclesService {
     return this.http.get<Vehicle>(`http://localhost:4000/vehicle/${id}`);
   }
 
+  getVehiclesByUserId(userId: number) {
+    return this.http.get<Vehicle[]>(
+      `http://localhost:4000/vehicles/user/${userId}`
+    );
+  }
+
   createNewVehicle(vehicle: Vehicle) {
     return this.http.post(`http://localhost:4000/vehicles`, vehicle);
+  }
+
+  deleteVehicle(id: number) {
+    return this.http.delete(`http://localhost:4000/vehicles/${id}`);
   }
 
   uploadImage(formData: FormData) {

@@ -12,6 +12,7 @@ import { Type } from '../../../models/Type';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-vehicle',
@@ -33,7 +34,8 @@ export class AddVehicleComponent implements OnInit {
   constructor(
     private vehicleService: VehiclesService,
     private additionalsService: AdditionalsService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -84,8 +86,10 @@ export class AddVehicleComponent implements OnInit {
         this.vehicleService
           .createNewVehicle(this.vehicle)
           .subscribe((data: any) => {
-            console.log('Uspjesno kreiran post');
-            console.log(data);
+            if (data.success) {
+              alert('vozilo dodato');
+              this.router.navigateByUrl('/');
+            }
           });
       });
   }

@@ -1,4 +1,5 @@
 export class Vehicle {
+  id: number;
   userId: number;
   type: string;
   title: string;

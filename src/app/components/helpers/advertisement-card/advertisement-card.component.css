@@ -1,0 +1,26 @@
+img {
+  max-width: auto;
+  max-height: 350px;
+}
+
+ion-icon {
+  color: red;
+  font-size: 30px;
+  border: 1px solid black;
+  border-radius: 50%;
+  padding: 15px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+ion-icon:hover {
+  background-color: red;
+  color: #fff;
+  transition: 0.3s ease-in;
+  cursor: pointer;
+}
+
+.container {
+  min-height: 50vh;
+}

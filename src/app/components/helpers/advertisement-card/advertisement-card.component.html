@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="card h-100 shadow-sm">
+    <ion-icon name="trash-outline" (click)="deleteVehicle()"></ion-icon>
+    <img
+      src="http://localhost:4000/{{ vehicle.thumbnail }}"
+      class="card-img-top"
+      alt=" nema slike"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ vehicle.brand }} {{ vehicle.model }}</h5>
+      <p class="card-text">
+        Godište: {{ vehicle.year }}<br />
+        Kilometraža: {{ vehicle.mileage }} km<br />
+        Gorivo: {{ vehicle.fuel }}<br />
+        Transmisija: {{ vehicle.transmission }}<br />
+        Cijena: {{ vehicle.price }}
+      </p>
+    </div>
+  </div>
+</div>
