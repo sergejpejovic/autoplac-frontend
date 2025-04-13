@@ -80,6 +80,11 @@
   <label for="description">Opis</label>
   <input type="text" name="description" [(ngModel)]="vehicle.description" />
 
+  <div class="form-group">
+    <label for="image">Slika</label>
+    <input type="file" (change)="setUpUploadedFile($event)" name="image" />
+  </div>
+
   <div class="text-center">
     <button class="btn btn-success px-4 py-2" (click)="addVehicle()">
       Sačuvaj

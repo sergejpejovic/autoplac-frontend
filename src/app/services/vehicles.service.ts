@@ -19,4 +19,8 @@ export class VehiclesService {
   createNewVehicle(vehicle: Vehicle) {
     return this.http.post(`http://localhost:4000/vehicles`, vehicle);
   }
+
+  uploadImage(formData: FormData) {
+    return this.http.post('http://localhost:4000/upload', formData);
+  }
 }

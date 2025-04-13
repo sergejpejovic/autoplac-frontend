@@ -28,6 +28,7 @@ export class AddVehicleComponent implements OnInit {
   models: Model[] = [];
   transmissions: Transmission[] = [];
   vehicleTypes: Type[] = [];
+  fileToUpload: any = null;
 
   constructor(
     private vehicleService: VehiclesService,
@@ -72,11 +73,24 @@ export class AddVehicleComponent implements OnInit {
     const yearOnly = new Date(this.vehicle.year).getFullYear();
     this.vehicle.year = yearOnly;
 
+    const formData: FormData = new FormData();
+    formData.append('img', this.fileToUpload);
+
     this.vehicleService
-      .createNewVehicle(this.vehicle)
-      .subscribe((data: any) => {
-        console.log('Uspjesno kreiran post');
-        console.log(data);
+      .uploadImage(formData)
+      .subscribe((fileUploadResponse: any) => {
+        this.vehicle.thumbnail = fileUploadResponse.filename;
+
+        this.vehicleService
+          .createNewVehicle(this.vehicle)
+          .subscribe((data: any) => {
+            console.log('Uspjesno kreiran post');
+            console.log(data);
+          });
       });
+  }
+
+  setUpUploadedFile(event: any) {
+    this.fileToUpload = event.target.files[0];
   }
 }
