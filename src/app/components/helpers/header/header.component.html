@@ -55,6 +55,16 @@
             </a>
           </li>
           <li *ngIf="isLoggedIn" class="nav-item">
+            <a class="nav-link" routerLink="/add-vehicle">
+              <ion-icon
+                name="add-circle-outline"
+                class="align-middle me-1"
+              ></ion-icon>
+              Dodaj oglas
+            </a>
+          </li>
+
+          <li *ngIf="isLoggedIn" class="nav-item">
             <a class="nav-link" (click)="logout()">
               <ion-icon
                 name="log-in-outline"

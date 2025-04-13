@@ -1,0 +1,17 @@
+<div class="card h-100 shadow-sm">
+  <img
+    src="https://via.placeholder.com/400x200"
+    class="card-img-top"
+    alt="{{ vehicle.title }}"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{ vehicle.brand }} {{ vehicle.model }}</h5>
+    <p class="card-text">
+      Godište: {{ vehicle.year }}<br />
+      Kilometraža: {{ vehicle.mileage }} km<br />
+      Gorivo: {{ vehicle.fuel }}<br />
+      Transmisija: {{ vehicle.transmission }}<br />
+      Cijena: {{ vehicle.price }}
+    </p>
+  </div>
+</div>

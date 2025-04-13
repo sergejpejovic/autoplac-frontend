@@ -21,4 +21,13 @@ export class AuthService {
     if (token) return true;
     return false;
   }
+
+  getUserData() {
+    const token = localStorage.getItem('autoplac-token');
+    if (!token) return null;
+    const tokenParts = token.split('.');
+    const userDataPart = tokenParts[1];
+    const user = JSON.parse(window.atob(userDataPart));
+    return user;
+  }
 }
