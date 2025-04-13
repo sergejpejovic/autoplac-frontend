@@ -4,6 +4,7 @@ import { RegisterComponent } from './components/pages/register/register.componen
 import { HomeComponent } from './components/pages/home/home.component';
 import { AddVehicleComponent } from './components/pages/add-vehicle/add-vehicle.component';
 import { AdvertisementComponent } from './components/pages/advertisement/advertisement.component';
+import { ContactComponent } from './components/pages/contact/contact.component';
 
 export const routes: Routes = [
   {
@@ -25,5 +26,9 @@ export const routes: Routes = [
   {
     path: 'advertisement',
     component: AdvertisementComponent,
+  },
+  {
+    path: 'contact',
+    component: ContactComponent,
   },
 ];
