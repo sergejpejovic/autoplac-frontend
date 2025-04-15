@@ -36,3 +36,18 @@
   transform: translate(-50%, -50%) scale(1.05);
   cursor: pointer;
 }
+
+.price {
+  font-size: 16px;
+  color: #fff;
+  background-color: black;
+  max-width: 100px;
+  padding: 5px 15px;
+  text-align: center;
+  border-left: 4px solid blue;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: inline-block;
+  white-space: nowrap;
+  margin-top: 5px;
+}

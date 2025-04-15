@@ -7,11 +7,11 @@
   <div class="card-body">
     <h5 class="card-title">{{ vehicle.brand }} {{ vehicle.model }}</h5>
     <p class="card-text">
-      Godište: {{ vehicle.year }}<br />
-      Kilometraža: {{ vehicle.mileage }} km<br />
-      Gorivo: {{ vehicle.fuel }}<br />
-      Transmisija: {{ vehicle.transmission }}<br />
-      Cijena: {{ vehicle.price }}
+      <strong>Godište:</strong> {{ vehicle.year }}<br />
+      <strong>Kilometraža:</strong> {{ vehicle.mileage }} km<br />
+      <strong>Gorivo:</strong> {{ vehicle.fuel }}<br />
+      <strong>Mjenjač:</strong> {{ vehicle.transmission }}<br />
+      <span class="price"> {{ vehicle.price }} €</span>
     </p>
   </div>
 

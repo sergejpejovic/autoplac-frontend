@@ -11,11 +11,11 @@ import { EngineSize } from '../../../models/EngineSize';
 import { Fuel } from '../../../models/Fuel';
 import { BodyType } from '../../../models/BodyType';
 import { AdditionalsService } from '../../../services/additionals.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-edit-vehicle',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './edit-vehicle.component.html',
   styleUrl: './edit-vehicle.component.css',
 })
