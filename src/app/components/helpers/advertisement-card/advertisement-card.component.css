@@ -3,7 +3,7 @@ img {
   max-height: 350px;
 }
 
-ion-icon {
+.delete-icon {
   color: red;
   font-size: 30px;
   border: 1px solid black;
@@ -14,11 +14,31 @@ ion-icon {
   right: 10px;
 }
 
-ion-icon:hover {
+.delete-icon:hover {
   background-color: red;
+  border-color: #fff;
   color: #fff;
   transition: 0.3s ease-in;
   cursor: pointer;
+}
+
+.edit-icon {
+  color: #0d6efd;
+  font-size: 30px;
+  border: 1px solid black;
+  border-radius: 50%;
+  padding: 15px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.edit-icon:hover {
+  background-color: #0d6efd;
+  color: #fff;
+  cursor: pointer;
+  border-color: #fff;
+  transition: 0.3s ease-in;
 }
 
 .container {

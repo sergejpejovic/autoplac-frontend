@@ -13,7 +13,7 @@ export class VehiclesService {
   }
 
   getVehicleById(id: number) {
-    return this.http.get<Vehicle>(`http://localhost:4000/vehicle/${id}`);
+    return this.http.get<Vehicle>(`http://localhost:4000/vehicles/${id}`);
   }
 
   getVehiclesByUserId(userId: number) {
@@ -24,6 +24,13 @@ export class VehiclesService {
 
   createNewVehicle(vehicle: Vehicle) {
     return this.http.post(`http://localhost:4000/vehicles`, vehicle);
+  }
+
+  updateVehicle(vehicle: Vehicle) {
+    return this.http.put(
+      `http://localhost:4000/vehicles/${vehicle.id}`,
+      vehicle
+    );
   }
 
   deleteVehicle(id: number) {

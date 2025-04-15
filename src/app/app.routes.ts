@@ -5,6 +5,7 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { AddVehicleComponent } from './components/pages/add-vehicle/add-vehicle.component';
 import { AdvertisementComponent } from './components/pages/advertisement/advertisement.component';
 import { ContactComponent } from './components/pages/contact/contact.component';
+import { EditVehicleComponent } from './components/pages/edit-vehicle/edit-vehicle.component';
 
 export const routes: Routes = [
   {
@@ -22,6 +23,10 @@ export const routes: Routes = [
   {
     path: 'add-vehicle',
     component: AddVehicleComponent,
+  },
+  {
+    path: 'edit-vehicle/:id',
+    component: EditVehicleComponent,
   },
   {
     path: 'advertisement',

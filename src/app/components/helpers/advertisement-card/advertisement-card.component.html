@@ -1,6 +1,15 @@
 <div class="container">
   <div class="card h-100 shadow-sm">
-    <ion-icon name="trash-outline" (click)="deleteVehicle()"></ion-icon>
+    <ion-icon
+      class="delete-icon"
+      name="trash-outline"
+      (click)="deleteVehicle()"
+    ></ion-icon>
+    <ion-icon
+      class="edit-icon"
+      name="create-outline"
+      routerLink="/edit-vehicle/{{ vehicle.id }}"
+    ></ion-icon>
     <img
       src="http://localhost:4000/{{ vehicle.thumbnail }}"
       class="card-img-top"
