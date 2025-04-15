@@ -6,6 +6,7 @@ import { AddVehicleComponent } from './components/pages/add-vehicle/add-vehicle.
 import { AdvertisementComponent } from './components/pages/advertisement/advertisement.component';
 import { ContactComponent } from './components/pages/contact/contact.component';
 import { EditVehicleComponent } from './components/pages/edit-vehicle/edit-vehicle.component';
+import { VehicleDetailedComponent } from './components/pages/vehicle-detailed/vehicle-detailed.component';
 
 export const routes: Routes = [
   {
@@ -31,6 +32,10 @@ export const routes: Routes = [
   {
     path: 'advertisement',
     component: AdvertisementComponent,
+  },
+  {
+    path: 'vehicle-detailed/:id',
+    component: VehicleDetailedComponent,
   },
   {
     path: 'contact',

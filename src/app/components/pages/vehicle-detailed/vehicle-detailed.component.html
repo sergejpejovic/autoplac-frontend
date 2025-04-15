@@ -1,0 +1,84 @@
+<div class="container">
+  <p class="title">{{ vehicle.title }}</p>
+  <p class="price">{{ vehicle.price }}€</p>
+
+  <div class="info">
+    <div class="info-card bg-light">
+      <ion-icon name="car-sport"></ion-icon>
+      <p class="text">{{ vehicle.mileage }}</p>
+      <p>Kilometraža</p>
+    </div>
+
+    <div class="info-card bg-light">
+      <ion-icon name="speedometer"></ion-icon>
+      <p class="text">{{ vehicle.hp }}</p>
+      <p>kubikaža</p>
+    </div>
+
+    <div class="info-card bg-light">
+      <ion-icon name="flash"></ion-icon>
+      <p class="text">{{ vehicle.fuel }}</p>
+      <p>gorivo</p>
+    </div>
+
+    <div class="info-card bg-light">
+      <ion-icon name="settings"></ion-icon>
+
+      <p class="text">{{ vehicle.transmission }}</p>
+      <p>mjenjač</p>
+    </div>
+
+    <div class="info-card bg-light">
+      <ion-icon name="calendar"></ion-icon>
+      <p class="text">{{ vehicle.year }}</p>
+      <p>godište</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <ul class="vehicle-info-list">
+        <li>
+          <span>Oznaka:</span
+          ><strong>{{ vehicle.engineSize }} {{ vehicle.fuel }}</strong>
+        </li>
+        <li>
+          <span>Tip vozila:</span><strong>{{ vehicle.bodyType }}</strong>
+        </li>
+        <li>
+          <span>Kilovata:</span
+          ><strong>{{ vehicle.hp * 0.7355 | number : "1.0-0" }} kW</strong>
+        </li>
+        <li>
+          <span>Konjska snaga:</span><strong>{{ vehicle.hp }} KS</strong>
+        </li>
+        <li>
+          <span>Boja spoljašnosti:</span><strong>{{ vehicle.color }}</strong>
+        </li>
+        <li>
+          <span>Godište:</span><strong>{{ vehicle.year }}</strong>
+        </li>
+        <li>
+          <span>Kubikaža:</span><strong>{{ vehicle.engineSize }}</strong>
+        </li>
+        <li>
+          <span>Gorivo:</span><strong>{{ vehicle.fuel }}</strong>
+        </li>
+        <li>
+          <span>Mjenjač:</span><strong>{{ vehicle.transmission }}</strong>
+        </li>
+        <li>
+          <span>Kilometraža:</span
+          ><strong>{{ vehicle.mileage | number }} km</strong>
+        </li>
+      </ul>
+    </div>
+    <div class="col-lg-6 d-flex justify-content-center align-items-center">
+      <img
+        [src]="'http://localhost:4000/' + vehicle.thumbnail"
+        alt="{{ vehicle.title }}"
+        class="vehicle-image"
+      />
+    </div>
+  </div>
+</div>
