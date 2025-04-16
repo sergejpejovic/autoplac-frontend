@@ -1,0 +1,12 @@
+<div class="user-card p-3 rounded border shadow-sm bg-light">
+  <h5 class="mb-3">Informacije o prodavcu</h5>
+
+  <ul class="list-unstyled mb-0">
+    <li><strong>Korisničko ime:</strong> {{ user.username }}</li>
+    <li><strong>Email:</strong> {{ user.email }}</li>
+    <li><strong>Kontakt:</strong> {{ user.contact || "Nije dostupan" }}</li>
+    <li>
+      <strong>Član od:</strong> {{ user.createdAt | date : "dd.MM.yyyy." }}
+    </li>
+  </ul>
+</div>

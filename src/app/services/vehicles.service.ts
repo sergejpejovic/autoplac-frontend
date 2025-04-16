@@ -22,6 +22,12 @@ export class VehiclesService {
     );
   }
 
+  getUserByVehicleId(vehicleId: number) {
+    return this.http.get<Vehicle>(
+      `http://localhost:4000/vehicles/user/vehicle/${vehicleId}`
+    );
+  }
+
   createNewVehicle(vehicle: Vehicle) {
     return this.http.post(`http://localhost:4000/vehicles`, vehicle);
   }
