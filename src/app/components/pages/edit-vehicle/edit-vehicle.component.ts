@@ -37,6 +37,16 @@ export class EditVehicleComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe((paramsData) => {
+      if (paramsData['id']) {
+        const vehicleId = paramsData['id'];
+
+        this.vehicleService.getVehicleById(vehicleId).subscribe((data: any) => {
+          this.vehicle = data;
+        });
+      }
+    });
+
     this.additionalsService.getAllBodyTypes().subscribe((data: any) => {
       this.bodyTypes = data;
     });
@@ -64,16 +74,6 @@ export class EditVehicleComponent implements OnInit {
     this.additionalsService.getAllVehicleTypes().subscribe((data: any) => {
       this.vehicleTypes = data;
     });
-
-    this.activatedRoute.params.subscribe((paramsData) => {
-      if (paramsData['id']) {
-        const vehicleId = paramsData['id'];
-
-        this.vehicleService.getVehicleById(vehicleId).subscribe((data: any) => {
-          this.vehicle = data;
-        });
-      }
-    });
   }
 
   updateVehicle() {
@@ -82,20 +82,28 @@ export class EditVehicleComponent implements OnInit {
 
     const formData: FormData = new FormData();
     formData.append('img', this.fileToUpload);
+    if (this.fileToUpload) {
+      this.vehicleService
+        .uploadImage(formData)
+        .subscribe((fileUploadResponse: any) => {
+          this.vehicle.thumbnail = fileUploadResponse.filename;
 
-    this.vehicleService
-      .uploadImage(formData)
-      .subscribe((fileUploadResponse: any) => {
-        this.vehicle.thumbnail = fileUploadResponse.filename;
-
-        this.vehicleService
-          .updateVehicle(this.vehicle)
-          .subscribe((data: any) => {
-            if (data.success) {
-              this.router.navigateByUrl('/advertisement');
-            }
-          });
+          this.vehicleService
+            .updateVehicle(this.vehicle)
+            .subscribe((data: any) => {
+              if (data.success) {
+                this.router.navigateByUrl('/advertisement');
+              }
+            });
+        });
+    } else {
+      this.vehicleService.updateVehicle(this.vehicle).subscribe((data: any) => {
+        console.log(data);
+        if (data.success) {
+          this.router.navigateByUrl('/advertisement');
+        }
       });
+    }
   }
 
   setUpUploadedFile(event: any) {
