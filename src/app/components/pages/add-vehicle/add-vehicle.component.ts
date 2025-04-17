@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { Equipment } from '../../../models/Equipment';
+import { EquipmentService } from '../../../services/equipment.service';
 
 @Component({
   selector: 'app-add-vehicle',
@@ -30,12 +32,15 @@ export class AddVehicleComponent implements OnInit {
   models: Model[] = [];
   transmissions: Transmission[] = [];
   vehicleTypes: Type[] = [];
+  equipmentList: Equipment[] = [];
+  selectedEquipmentIds: number[] = [];
   fileToUpload: any = null;
 
   constructor(
     private vehicleService: VehiclesService,
     private additionalsService: AdditionalsService,
     private authService: AuthService,
+    private equipmentService: EquipmentService,
     private router: Router
   ) {}
 
@@ -68,11 +73,24 @@ export class AddVehicleComponent implements OnInit {
       this.vehicleTypes = data;
     });
 
+    this.equipmentService.getAllEquipment().subscribe((data: any) => {
+      this.equipmentList = data;
+    });
+
     const user = this.authService.getUserData();
     this.vehicle.userId = user?.userId;
   }
 
-  addVehicle() {
+  toggleEquipmentSelection(id: number) {
+    const index = this.selectedEquipmentIds.indexOf(id);
+    if (index > -1) {
+      this.selectedEquipmentIds.splice(index, 1);
+    } else {
+      this.selectedEquipmentIds.push(id);
+    }
+  }
+
+  addVehicle(): void {
     const yearOnly = new Date(this.vehicle.year).getFullYear();
     this.vehicle.year = yearOnly;
 
@@ -88,8 +106,27 @@ export class AddVehicleComponent implements OnInit {
           .createNewVehicle(this.vehicle)
           .subscribe((data: any) => {
             if (data.success) {
-              alert('vozilo dodato');
-              this.router.navigateByUrl('/');
+              const vehicleId = data.vehicleId;
+
+              if (this.selectedEquipmentIds.length > 0) {
+                this.equipmentService
+                  .addEquipmentToVehicle(vehicleId, this.selectedEquipmentIds)
+                  .subscribe((equipmentResult: any) => {
+                    if (equipmentResult.success) {
+                      alert('Vozilo i oprema uspešno dodati');
+                      this.router.navigateByUrl('/');
+                    } else {
+                      alert(
+                        'Vozilo dodato, ali nije bilo moguće dodati opremu.'
+                      );
+                    }
+                  });
+              } else {
+                alert('Vozilo uspešno dodato (bez dodatne opreme)');
+                this.router.navigateByUrl('/');
+              }
+            } else {
+              alert('Greška pri dodavanju vozila.');
             }
           });
       });
