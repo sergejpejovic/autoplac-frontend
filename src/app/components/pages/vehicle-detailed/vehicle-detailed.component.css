@@ -94,3 +94,25 @@ ion-icon {
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
+
+.equipment-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  height: 38px;
+}
+
+.equipment-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.small-icon {
+  font-size: 1.1rem;
+  margin-right: 5px;
+  margin-top: 1px;
+}

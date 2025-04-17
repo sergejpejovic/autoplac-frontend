@@ -87,6 +87,21 @@
       </p>
     </div>
   </div>
+  <div class="equipment-section mt-4">
+    <strong class="section-title">Dodatna oprema</strong>
+    <div class="row">
+      <div class="col-6 col-md-4 col-lg-3 mb-2" *ngFor="let item of equipment">
+        <div class="equipment-card bg-light">
+          <ion-icon
+            name="checkmark-circle-outline"
+            class="text-success me-1 small-icon"
+          ></ion-icon>
+          <span class="equipment-name">{{ item.name }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="col-lg-4 col-md-6 mx-auto">
     <app-user-card [user]="user" />
   </div>

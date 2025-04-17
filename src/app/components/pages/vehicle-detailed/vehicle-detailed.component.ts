@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { User } from '../../../models/User';
 import { UserCardComponent } from '../../helpers/user-card/user-card.component';
+import { EquipmentService } from '../../../services/equipment.service';
+import { Equipment } from '../../../models/Equipment';
 
 @Component({
   selector: 'app-vehicle-detailed',
@@ -16,9 +18,11 @@ import { UserCardComponent } from '../../helpers/user-card/user-card.component';
 export class VehicleDetailedComponent implements OnInit {
   vehicle: Vehicle = new Vehicle();
   user: User = new User();
+  equipment: Equipment[] = [];
 
   constructor(
     private vehicleService: VehiclesService,
+    private equipmentService: EquipmentService,
     private activatedRoute: ActivatedRoute
   ) {}
 
@@ -35,6 +39,12 @@ export class VehicleDetailedComponent implements OnInit {
           .getUserByVehicleId(vehicleId)
           .subscribe((data: any) => {
             this.user = data[0];
+          });
+
+        this.equipmentService
+          .getEquipmentByVehicleId(vehicleId)
+          .subscribe((data: any) => {
+            this.equipment = data;
           });
       }
     });
